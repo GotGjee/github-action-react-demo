@@ -17,6 +17,8 @@ jobs:
         run: npm run lint
 
   deploy:
+    needs: 
+      - lint
     runs-on: ubuntu-latest
     steps:
       - name: Clone repo
