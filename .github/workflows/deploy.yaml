@@ -1,7 +1,5 @@
 name: Deploy React CSR
-on:
-  push:
-  workflow_dispatch:
+on: push
 jobs:
   lint:
     #npm run lint
