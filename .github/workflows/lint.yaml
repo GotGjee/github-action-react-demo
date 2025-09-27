@@ -2,8 +2,11 @@ name: ESLint
 on: push
 jobs:
   lint:
+    environment: Testing
     runs-on: ubuntu-latest
     steps:
+      - name: Print node version
+        run: echo "Node version:${{vars.NODE_VERSION}}"
       - name: Get Code
         uses: actions/checkout@v4
       - name: Install node

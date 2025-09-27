@@ -14,6 +14,7 @@ on:
 #  node-version: '22.15.1'
 jobs:
   build:
+    environment : Prod
     runs-on: ubuntu-latest
     steps:
       - name: Print node version
