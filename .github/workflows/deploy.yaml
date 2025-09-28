@@ -15,17 +15,23 @@ jobs:
   build:
     # environment : Prod
     runs-on: ubuntu-latest
+    container:
+      image: node:24
+      env:
+        NODE_ENV: production
     steps:
       - name: Print node version
         run: echo "Node version:${{vars.NODE_VERSION}}"
       - name: Print API key
         run: echo "API Key:${{secrets.API_KEY}}"
+      
       - name: Clone repo
         uses: actions/checkout@v5
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{vars.NODE_VERSION}}
+      # - name: Setup Node.js
+      #  uses: actions/setup-node@v3
+      #  with:
+      #    node-version: ${{vars.NODE_VERSION}}
+      
       - name: Get npm cache directory
         id: npm-cache-dir
         shell: bash
@@ -37,12 +43,16 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+      
       - name: Install dependencies
         run: npm install
+      
       - name: Build
         run: npm run build
+      
       - name: List dist/
         run: ls dist
+      
       - name: Upload dist
         uses: actions/upload-artifact@v4
         with:
