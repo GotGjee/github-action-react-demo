@@ -22,14 +22,12 @@ jobs:
     steps:
       - name: Clone repo
         uses: actions/checkout@v5
-      - name: Install and Cache node modules
+      - name: Install and Cache
         uses: ./.github/actions/install-cache
       - name: Build
-        run: npm run build
-      
+        run: bun run build
       - name: List dist/
         run: ls dist
-      
       - name: Upload dist
         uses: actions/upload-artifact@v4
         with:
