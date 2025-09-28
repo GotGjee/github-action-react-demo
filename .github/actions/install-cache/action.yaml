@@ -1,5 +1,5 @@
 name: Install deps and caching
-dependencies: Install dependencies and caching 
+description: Install deps and caching
 inputs:
   NODE_VERSION:
     description: Node version
@@ -25,6 +25,8 @@ runs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
+    
     - name: Install dependencies
+      shell: bash
       run: npm install
       
