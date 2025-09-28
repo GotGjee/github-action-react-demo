@@ -14,7 +14,7 @@ on:
 #  node-version: '22.15.1'
 jobs:
   build:
-    environment : Prod
+    # environment : Prod
     runs-on: ubuntu-latest
     steps:
       - name: Print node version
@@ -50,7 +50,7 @@ jobs:
           name: dist-folder
           path: dist/
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: ${{github.ref == 'refs/heads/main'}}
     runs-on: ubuntu-latest
     needs:
       - build
