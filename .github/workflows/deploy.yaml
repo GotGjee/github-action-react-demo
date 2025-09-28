@@ -51,7 +51,7 @@ jobs:
       - name: force fail
         run: exit 1
   deploy:
-    if: susccess()
+    if: success()
     runs-on: ubuntu-latest
     needs:
       - build
