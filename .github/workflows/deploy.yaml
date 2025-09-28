@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: node:22.15.1
-      env:
-        NODE_ENV: production
+      # env:
+      #  NODE_ENV: production
     steps:
       - name: Print node version
         run: echo "Node version:${{vars.NODE_VERSION}}"
