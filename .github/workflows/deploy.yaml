@@ -16,7 +16,7 @@ jobs:
     # environment : Prod
     runs-on: ubuntu-latest
     container:
-      image: node:24
+      image: node:22.15.1
       env:
         NODE_ENV: production
     steps:
