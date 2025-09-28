@@ -48,7 +48,7 @@ jobs:
         id: deploy
         uses: ./.github/actions/deploy-surge
         with:
-          domain: gh-action-react1.surge.sh
+          domain: poporing.surge.sh
           token: ${{ secrets.SURGE_TOKEN }}
           email: ${{ vars.SURGE_EMAIL }}
           dist-folder: ./dist
