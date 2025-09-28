@@ -20,6 +20,8 @@ jobs:
       # env:
       #  NODE_ENV: production
     steps:
+      - name: Clone repo
+        uses: actions/checkout@v5
       - name: Install and Cache node modules
         uses: ./.github/actions/install-cache
       - name: Build
