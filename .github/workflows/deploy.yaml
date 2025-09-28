@@ -15,38 +15,13 @@ jobs:
   build:
     # environment : Prod
     runs-on: ubuntu-latest
-    container:
-      image: node:22.15.1
+    #container:
+      #image: node:22.15.1
       # env:
       #  NODE_ENV: production
     steps:
-      - name: Print node version
-        run: echo "Node version:${{vars.NODE_VERSION}}"
-      - name: Print API key
-        run: echo "API Key:${{secrets.API_KEY}}"
-      
-      - name: Clone repo
-        uses: actions/checkout@v5
-      # - name: Setup Node.js
-      #  uses: actions/setup-node@v3
-      #  with:
-      #    node-version: ${{vars.NODE_VERSION}}
-      
-      - name: Get npm cache directory
-        id: npm-cache-dir
-        shell: bash
-        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-      - uses: actions/cache@v4
-        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
-        with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      
-      - name: Install dependencies
-        run: npm install
-      
+      - name: Install and Cache node modules
+        uses: ./.github/actions/install-cache
       - name: Build
         run: npm run build
       
